@@ -1,22 +1,47 @@
 import React from 'react';
+import Paper from 'material-ui/Paper';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+
+import {orange500, amber500, cyan500} from 'material-ui/styles/colors';
 
 // Right now, this component has props.recipeList and props.addCard
 const RecipeCreator = props => (
-  <div id="recipeCreator">
+  <Paper style={{backgroundColor: orange500, height:200}}>
     <p id="creatorTitle"><strong>Add New Recipe</strong></p>
 
-    <label>Name: <input type="text" name="recipeName" id="nameInput" /></label>
-    <label> Category: <input type="text" name="category" id="categoryInput" /></label>
-    <label> URL: <input type="text" name="url" id="URLInput"/></label>
-    {/* <label>Notes: <input type="text" name="notes" id="notesInput" /></label> */}
+    <TextField
+      id="nameInput"
+      hintText="Recipe Name"
+      underlineStyle={{borderColor: cyan500}}
+      underlineFocusStyle={{borderColor: amber500}} />
+    <TextField
+      id="categoryInput"
+      hintText="Category"
+      underlineStyle={{borderColor: cyan500}}
+      underlineFocusStyle={{borderColor: amber500}} />
+    <TextField
+      id="URLInput"
+      hintText="Paste URL"
+      underlineStyle={{borderColor: cyan500}}
+      underlineFocusStyle={{borderColor: amber500}} />
 
-    <button onClick={() => props.addCard({
+    <RaisedButton 
+      label="ADD TO MY COOKBOOK"
+      onClick={() => props.addCard({
+        name: document.getElementById('nameInput').value,
+        category: document.getElementById('categoryInput').value,
+        url: document.getElementById('URLInput').value,
+        // notes: document.getElementById('notesInput').value,
+      })}/>
+      
+    {/* <button onClick={() => props.addCard({
       name: document.getElementById('nameInput').value,
       category: document.getElementById('categoryInput').value,
       url: document.getElementById('URLInput').value,
       // notes: document.getElementById('notesInput').value,
-    })}>ADD YA RECIPE</button>
-  </div>
+    })}>ADD YA RECIPE</button> */}
+  </Paper>
 );
 
 export default RecipeCreator;

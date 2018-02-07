@@ -1,5 +1,17 @@
 import React, { Component } from 'react';
 import RecipeCard from './RecipeCard.jsx'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import {orange500} from 'material-ui/styles/colors'
+import {deepOrange500} from 'material-ui/styles/colors'
+
+
+const muiTheme = getMuiTheme({
+  palette: {
+    primary1Color: orange500,
+    accent1Color: deepOrange500
+  }
+})
 
 class RecipeList extends Component {
   constructor(props){
@@ -27,9 +39,11 @@ class RecipeList extends Component {
     }
 
     return(
-      <div className="recipeList">
-        {recipeCardArr}
-      </div>
+      <MuiThemeProvider muiTheme={muiTheme}>
+        <div className="recipeList">
+          {recipeCardArr}
+        </div>
+      </MuiThemeProvider>
     );
   }
 }

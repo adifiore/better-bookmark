@@ -2,6 +2,18 @@ import React, { Component } from 'react';
 // import child components...
 import RecipeCreator from '../components/RecipeCreator.jsx'
 import RecipeList from '../components/RecipeList.jsx'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import {orange500} from 'material-ui/styles/colors'
+import {deepOrange500} from 'material-ui/styles/colors'
+
+
+const muiTheme = getMuiTheme({
+  palette: {
+    primary1Color: orange500,
+    accent1Color: deepOrange500
+  }
+})
 
 class ContentContainer extends Component {
   constructor(){
@@ -59,18 +71,20 @@ class ContentContainer extends Component {
 
   render() {
     return(
-      <div>
-        <RecipeList
-          recipeList={this.state.recipeList}
-          populateRecipes={this.populateRecipes}
-          deleteCard={this.deleteCard}
-          likeRecipe={this.likeRecipe}
-          editRecipe={this.editRecipe}/>
-        <RecipeCreator
-          addCard={this.addCard}
-          onChange={this.handleChange}
-          recipeList={this.state.recipeList}/>
-      </div>
+      <MuiThemeProvider muiTheme={muiTheme}>
+        <div>
+          <RecipeList
+            recipeList={this.state.recipeList}
+            populateRecipes={this.populateRecipes}
+            deleteCard={this.deleteCard}
+            likeRecipe={this.likeRecipe}
+            editRecipe={this.editRecipe}/>
+          <RecipeCreator
+            addCard={this.addCard}
+            onChange={this.handleChange}
+            recipeList={this.state.recipeList}/>
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
