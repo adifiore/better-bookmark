@@ -18,6 +18,7 @@
     "cookie-parser": "^1.4.1",
     "css-loader": "^0.28.7",
     "express": "^4.14.0",
+    "material-ui": "^0.20.0",
     "mongoose": "^4.7.8",
     "nodemon": "^1.14.12",
     "react": "^16.2.0",

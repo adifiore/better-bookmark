@@ -23,7 +23,7 @@ class RecipeList extends Component {
   render() {
     let recipeCardArr = [];
     for (let i = 0; i < this.props.recipeList.length; i++) {
-      recipeCardArr.push(<RecipeCard key={i} index={i} id={this.props.recipeList[i]._id} name={this.props.recipeList[i].name} recipeList={this.props.recipeList} deleteCard={this.props.deleteCard} likeRecipe={this.props.likeRecipe} editRecipe={this.props.editRecipe}/>)
+      recipeCardArr.push(<RecipeCard key={i} index={i} id={this.props.recipeList[i]._id} name={this.props.recipeList[i].name} liked={this.props.recipeList[i].liked} recipeList={this.props.recipeList} deleteCard={this.props.deleteCard} likeRecipe={this.props.likeRecipe} editRecipe={this.props.editRecipe}/>)
     }
 
     return(

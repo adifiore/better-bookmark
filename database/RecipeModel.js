@@ -4,7 +4,7 @@ let Schema = mongoose.Schema;
 const recipeSchema = new Schema({
   name: {type: String, required: true, unique: true},
   category: {type: String, required: true},
-  link: {type: String, required: true},
+  url: {type: String, required: true},
   liked: {type: Boolean, default: false},
   notes: String
 });

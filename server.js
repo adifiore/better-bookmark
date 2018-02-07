@@ -26,12 +26,14 @@ app.get('/styles.css', (req,res) => res.sendFile(__dirname + '/styles.css'));
 app.get('/main.js', (req,res) => res.sendFile(__dirname + '/main.js'));
 app.get('/dist/bundle.js', (req,res) => res.sendFile(__dirname + '/dist/bundle.js'));
 
+// Get all recipes (to load them or check them)
+app.get('/recipes', recipeController.getAllRecipes);
 
 // Create a recipe in the database
 app.post('/', recipeController.createRecipe, recipeController.getAllRecipes);
 
-// Get all recipes (to load them or check them)
-app.get('/recipes', recipeController.getAllRecipes);
+// 'Like' a recipe in the database
+app.put('/:id', recipeController.likeRecipe, recipeController.getAllRecipes);
 
 // Delete a recipe from the database
 app.delete('/:id', recipeController.deleteRecipe, recipeController.getAllRecipes);

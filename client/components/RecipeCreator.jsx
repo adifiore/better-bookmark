@@ -13,14 +13,16 @@ const RecipeCreator = props => (
     <button onClick={() => props.addCard({
       name: document.getElementById('nameInput').value,
       category: document.getElementById('categoryInput').value,
-      link: document.getElementById('URLInput').value,
-      notes: document.getElementById('notesInput').value,
+      url: document.getElementById('URLInput').value,
+      // notes: document.getElementById('notesInput').value,
     })}>ADD YA RECIPE</button>
   </div>
 );
 
 export default RecipeCreator;
 
+
+// This didn't work with react, because the "action" property automatically redirected to root
 {/* <form method="POST" action="/">
   <label>Name: <input type="text" name="recipeName" onChange={props.handleChange} /></label>
   <label>Category: <input type="text" name="category" onChange={props.handleChange} /></label>

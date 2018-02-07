@@ -7,8 +7,8 @@ const recipeController = {
     Recipe.create({
       name: req.body.name,
       category: req.body.category,
-      link: req.body.link,
-      // liked: req.body.liked,
+      url: req.body.url,
+      liked: false,
       notes: req.body.notes
     }, (err, recipe) => {
       if (err) {
@@ -28,12 +28,23 @@ const recipeController = {
     })
   },
 
-  getRecipe(req,res) {
+  // getRecipe(req,res) {
 
-  },
+  // },
 
-  updateRecipe(req,res){
-
+  likeRecipe(req,res,next){
+    let _id = req.params.id;
+    Recipe.findOne({ _id }, (err, recipe) => {
+      if (err || !recipe) {
+        console.log(err);
+        return res.status(400).send();
+      } else {
+        recipe.liked ? recipe.liked = false : recipe.liked = true;
+        recipe.save( (err) => {
+          next(); //because save is async. need to wait for the save.
+        });
+      }
+    })
   },
 
   deleteRecipe(req,res,next){

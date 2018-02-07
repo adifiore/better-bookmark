@@ -14,11 +14,12 @@ class ContentContainer extends Component {
     this.populateRecipes = this.populateRecipes.bind(this);
     this.deleteCard = this.deleteCard.bind(this);
     this.addCard = this.addCard.bind(this);
-    this.editRecipe = this.editRecipe.bind(this);
+    // this.editRecipe = this.editRecipe.bind(this);
     this.likeRecipe = this.likeRecipe.bind(this);
   }
 
   populateRecipes(data){
+    console.log(data);
     let stateCopy = {};
     stateCopy.recipeList = data;
     this.setState({ recipeList: stateCopy.recipeList });
@@ -41,14 +42,19 @@ class ContentContainer extends Component {
     })
   }
 
-  editRecipe(id){
-    console.log("Now you gon' EDIT RECIPE AT ID: " + id);
-    // 
-  }
+  // editRecipe(id){
+  //   console.log("Now you gon' EDIT RECIPE AT ID: " + id);
+  // }
 
   likeRecipe(id){
-    console.log('YOU LIKED RECIPE ID: ' +id);
-    
+    // Send a put request to update the "liked" property
+    $.ajax({
+      type: 'PUT',
+      url: 'http://localhost:3000/' + id,
+      success: this.populateRecipes
+    })
+    // On success, come back here and change the display
+    // That might not work for reloading, so maybe the display needs to depend on the property.
   }
 
   render() {
