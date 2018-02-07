@@ -21,9 +21,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // load main page
-app.get('/', (req,res) => res.sendFile(__dirname + '/client/index.html'));
-app.get('/styles.css', (req,res) => res.sendFile(__dirname + '/client/styles.css'));
-app.get('/main.js', (req,res) => res.sendFile(__dirname + '/client/main.js'));
+app.get('/', (req,res) => res.sendFile(__dirname + '/index.html'));
+app.get('/styles.css', (req,res) => res.sendFile(__dirname + '/styles.css'));
+app.get('/main.js', (req,res) => res.sendFile(__dirname + '/main.js'));
+app.get('/dist/bundle.js', (req,res) => res.sendFile(__dirname + '/dist/bundle.js'));
 
 // const recipeRouter = express.Router();
 // app.use('/', recipeRouter);

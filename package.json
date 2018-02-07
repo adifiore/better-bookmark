@@ -4,7 +4,8 @@
   "description": "recipe aggregator",
   "main": "server.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline --progress --colors --watch --content-base ./"
+    "start": "./node_modules/.bin/webpack; nodemon ./server/server.js",
+    "webpack": "./node_modules/.bin/webpack -w"
   },
   "dependencies": {
     "babel": "^6.23.0",
@@ -18,7 +19,7 @@
     "css-loader": "^0.28.7",
     "express": "^4.14.0",
     "mongoose": "^4.7.8",
-    "nodemon": "^1.11.0",
+    "nodemon": "^1.14.12",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",

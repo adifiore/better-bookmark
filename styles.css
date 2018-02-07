@@ -1,31 +1,28 @@
-/* #mainContainer {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 10px;
-  grid-auto-rows: minmax(10px, auto);
-} */
+#title {
+  text-align: center;
+}
 
-#title{
+ {
   margin: auto;
   border: 1px solid black;
   text-align: center;
   padding-top: 20px;
 }
 
-#contentContainer {
+.mainContainer {
   display: grid;
   grid-template-columns: auto auto;
   /* grid-gap: 10px; */
-  /* border: 1px solid blue; */
+  border: 1px solid blue;
 }
 
-#recipesContainer {
+.recipeCard {
   grid-column: 1/2;
   /* grid-row:3/10; */
   border: 1px solid red;
 }
 
-#addRecipeForm {
+RecipeCreator {
   grid-column: 2/3;
   border: 1px solid green;
 }

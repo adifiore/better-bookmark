@@ -1,14 +1,14 @@
 const path = require('path');
 const webpack = require('webpack');
 
-
 module.exports = {
-  entry: './client/index.jsx',
+  entry: './client/index.js',
   output: {
-    path: path.join(__dirname, '/build'),
-    filename: 'bundle.js',
-    publicPath: '/build/'
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/dist/',
+    filename: 'bundle.js'
   },
+  devtool: "eval-source-map",
   module: {
     loaders: [
       {
