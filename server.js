@@ -26,11 +26,15 @@ app.get('/styles.css', (req,res) => res.sendFile(__dirname + '/styles.css'));
 app.get('/main.js', (req,res) => res.sendFile(__dirname + '/main.js'));
 app.get('/dist/bundle.js', (req,res) => res.sendFile(__dirname + '/dist/bundle.js'));
 
-// const recipeRouter = express.Router();
-// app.use('/', recipeRouter);
 
 // Create a recipe in the database
 app.post('/', recipeController.createRecipe);
+
+// Get all recipes (to load them or check them)
 app.get('/recipes', recipeController.getAllRecipes);
+
+// Delete a recipe from the database
+app.delete('/:id', recipeController.deleteRecipe, recipeController.getAllRecipes);
+
 
 app.listen(PORT, () => console.log(`Listening on PORT: ${PORT}`));

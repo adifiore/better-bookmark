@@ -4,7 +4,7 @@
   "description": "recipe aggregator",
   "main": "server.js",
   "scripts": {
-    "start": "./node_modules/.bin/webpack; nodemon ./server/server.js",
+    "start": "nodemon ./server/server.js",
     "webpack": "./node_modules/.bin/webpack -w"
   },
   "dependencies": {
