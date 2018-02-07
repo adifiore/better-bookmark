@@ -4,15 +4,14 @@ import RecipeCreator from '../components/RecipeCreator.jsx'
 import RecipeList from '../components/RecipeList.jsx'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import {orange500} from 'material-ui/styles/colors'
-import {deepOrange500} from 'material-ui/styles/colors'
+import RaisedButton from 'material-ui/RaisedButton';
+import {orange500, amber500, cyan500} from 'material-ui/styles/colors';
 
 
 const muiTheme = getMuiTheme({
-  palette: {
-    primary1Color: orange500,
-    accent1Color: deepOrange500
-  }
+  // palette: {
+  //   primary1Color: orange500,
+  // }
 })
 
 class ContentContainer extends Component {
@@ -23,17 +22,21 @@ class ContentContainer extends Component {
       recipeList: [],
     };
 
+    this.dbList; // So that when I click 'starred only', I can go back.
+    this.starOn = false; // Initially, the list is not filtered by stars.
+
     this.populateRecipes = this.populateRecipes.bind(this);
     this.deleteCard = this.deleteCard.bind(this);
     this.addCard = this.addCard.bind(this);
     // this.editRecipe = this.editRecipe.bind(this);
     this.likeRecipe = this.likeRecipe.bind(this);
+    this.viewStarred = this.viewStarred.bind(this);
   }
 
   populateRecipes(data){
-    console.log(data);
-    let stateCopy = {};
+    const stateCopy = {};
     stateCopy.recipeList = data;
+    this.dbList = data; // So that 'starred only' can be undone.
     this.setState({ recipeList: stateCopy.recipeList });
   }
 
@@ -66,13 +69,31 @@ class ContentContainer extends Component {
       success: this.populateRecipes
     })
     // On success, come back here and change the display
-    // That might not work for reloading, so maybe the display needs to depend on the property.
+  }
+
+  viewStarred(){
+    if (this.starOn === false) {
+      this.starOn = true;
+      let recipesArr = this.state.recipeList.slice();
+      recipesArr = recipesArr.filter((recipe) => {
+        return recipe.liked;
+      })
+      this.setState({ recipeList: recipesArr});
+    } else {
+      this.starOn = false;s
+      this.setState({recipeList: this.dbList});
+    }
+    
   }
 
   render() {
     return(
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
+          <RaisedButton 
+            label="Starred Only"
+            style={{display:'block', width:180, margin:'auto', marginTop:20, backgroundColor:amber500}}
+            onClick={() => this.viewStarred()}/>
           <RecipeList
             recipeList={this.state.recipeList}
             populateRecipes={this.populateRecipes}

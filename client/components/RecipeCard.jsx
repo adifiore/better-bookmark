@@ -14,12 +14,14 @@ import React from 'react';
 // import CardHeader from 'material-ui/Card/CardHeader';
 // import CardText from 'material-ui/Card/CardText';
 // import CardExpandable from 'material-ui/Card/CardExpandable';
-import {orange500} from 'material-ui/styles/colors'
 import Paper from 'material-ui/Paper';
+import RaisedButton from 'material-ui/RaisedButton';
+
+import {orange500, amber500, cyan500} from 'material-ui/styles/colors';
 
 const style = {
-  height: 300,
-  width: 300,
+  height: 350,
+  width: 350,
   margin: 20,
   backgroundColor: '#F44336',
   textAlign: 'center',
@@ -36,7 +38,7 @@ const RecipeCard = props => {
   }
 
   return (
-    <Paper style={style} zDepth={2}>
+    <Paper style={style} zDepth={3}>
       <p id="recipeTitle">{props.recipeList[props.index].name}</p>
       {/* <p className="recipeName">{props.recipeList[props.index].name}</p> */}
       <p><label>Category: </label>{props.recipeList[props.index].category}</p>
@@ -45,8 +47,12 @@ const RecipeCard = props => {
       {/* <p><label>Notes: </label>{props.recipeList[props.index].notes}</p> */}
 
       {image}
-
-      <button onClick={() => props.deleteCard(props.id)}>remove from cookbook</button>
+    
+      <RaisedButton
+        label="remove"
+        style={{display:'block', width:120, margin:'auto', marginTop:20, backgroundColor:amber500}}
+        onClick={() => props.deleteCard(props.id)}/>
+      {/* <button onClick={() => props.deleteCard(props.id)}>remove from cookbook</button> */}
       {/* <button onClick={() => props.likeRecipe(props.id)}>I LIKED IT</button> */}
       {/* <button onClick={() => props.editRecipe(props.id)}>edit notes</button> */}
     </Paper>

@@ -28,7 +28,7 @@ const RecipeCreator = props => (
 
     <RaisedButton 
       label="ADD TO MY COOKBOOK"
-      style={{display:'block', width:700, margin:'auto', marginTop:20}}
+      style={{display:'block', width:600, margin:'auto', marginTop:20}}
       onClick={() => props.addCard({
         name: document.getElementById('nameInput').value,
         category: document.getElementById('categoryInput').value,
