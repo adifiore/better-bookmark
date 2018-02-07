@@ -28,7 +28,7 @@ app.get('/dist/bundle.js', (req,res) => res.sendFile(__dirname + '/dist/bundle.j
 
 
 // Create a recipe in the database
-app.post('/', recipeController.createRecipe);
+app.post('/', recipeController.createRecipe, recipeController.getAllRecipes);
 
 // Get all recipes (to load them or check them)
 app.get('/recipes', recipeController.getAllRecipes);

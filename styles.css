@@ -8,18 +8,8 @@
   font-weight: bold;
 }
 
-.mainContainer {
-  display: grid;
-  grid-template-columns: auto auto;
-  /* grid-gap: 10px; */
-  border: 1px solid blue;
-}
-
 .recipeList{
   width:100%;
-  /* grid-column: 1; */
-  /* grid-row:3/10; */
-  /* border: 1px solid green; */
 }
 
 .recipeCard {
@@ -27,14 +17,14 @@
   width:32%;
   margin-top:10px;
   margin-left:10px;
-  /* grid-column: 1; */
-  /* grid-row:3/10; */
   background-color:#F7F7F7;
   border-radius: 5px;
-  /* border: 1px solid red; */
 }
 
-RecipeCreator {
-  grid-column: 2/3;
-  border: 1px solid green;
+#recipeCreator {
+  text-align: center;
+}
+
+#creatorTitle{
+  text-align: center;
 }

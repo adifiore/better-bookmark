@@ -13,7 +13,9 @@ class ContentContainer extends Component {
 
     this.populateRecipes = this.populateRecipes.bind(this);
     this.deleteCard = this.deleteCard.bind(this);
-    this.addCard = this.addCard.bind(this)
+    this.addCard = this.addCard.bind(this);
+    this.editRecipe = this.editRecipe.bind(this);
+    this.likeRecipe = this.likeRecipe.bind(this);
   }
 
   populateRecipes(data){
@@ -31,7 +33,22 @@ class ContentContainer extends Component {
   }
 
   addCard(data){
-    console.log(data);
+    $.ajax({
+      type: 'POST',
+      url: 'http://localhost:3000',
+      data: data,
+      success: this.populateRecipes
+    })
+  }
+
+  editRecipe(id){
+    console.log("Now you gon' EDIT RECIPE AT ID: " + id);
+    // 
+  }
+
+  likeRecipe(id){
+    console.log('YOU LIKED RECIPE ID: ' +id);
+    
   }
 
   render() {
@@ -40,8 +57,12 @@ class ContentContainer extends Component {
         <RecipeList
           recipeList={this.state.recipeList}
           populateRecipes={this.populateRecipes}
-          deleteCard={this.deleteCard}/>
+          deleteCard={this.deleteCard}
+          likeRecipe={this.likeRecipe}
+          editRecipe={this.editRecipe}/>
         <RecipeCreator
+          addCard={this.addCard}
+          onChange={this.handleChange}
           recipeList={this.state.recipeList}/>
       </div>
     );

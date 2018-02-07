@@ -2,19 +2,23 @@ const Recipe = require('./RecipeModel');
 
 const recipeController = {
   //Post a recipe to root
-  createRecipe(req,res) {
+  createRecipe(req,res,next) {
     //check for valid input
-
     Recipe.create({
-      name: req.body.recipeName,
+      name: req.body.name,
       category: req.body.category,
-      link: req.body.url,
-      liked: req.body.liked,
+      link: req.body.link,
+      // liked: req.body.liked,
       notes: req.body.notes
     }, (err, recipe) => {
-      if (err) return res.status(400).send();
-      // If you did it correctly, redirect to root, which re-renders the page. NOT reac
-      if (recipe) res.redirect('/');
+      if (err) {
+        //for instance, if the recipe name is not unique
+        console.log(err);
+        return res.status(400).send(err);
+      }
+
+      // If you did it correctly, move on to getAllRecipes to re-render the page.
+      if (recipe) next();
     });
   },
 

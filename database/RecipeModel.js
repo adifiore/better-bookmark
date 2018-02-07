@@ -5,7 +5,7 @@ const recipeSchema = new Schema({
   name: {type: String, required: true, unique: true},
   category: {type: String, required: true},
   link: {type: String, required: true},
-  liked: Boolean,
+  liked: {type: Boolean, default: false},
   notes: String
 });
 

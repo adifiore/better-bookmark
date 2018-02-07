@@ -8,6 +8,7 @@ class RecipeList extends Component {
     // this.props.recipeList
     // this.props.populateRecipes
     // this.props.deleteCard
+    // this.props.editRecipe
   }
 
   componentDidMount() {
@@ -22,7 +23,7 @@ class RecipeList extends Component {
   render() {
     let recipeCardArr = [];
     for (let i = 0; i < this.props.recipeList.length; i++) {
-      recipeCardArr.push(<RecipeCard key={i} index={i} id={this.props.recipeList[i]._id} name={this.props.recipeList[i].name} recipeList={this.props.recipeList} deleteCard={this.props.deleteCard}/>)
+      recipeCardArr.push(<RecipeCard key={i} index={i} id={this.props.recipeList[i]._id} name={this.props.recipeList[i].name} recipeList={this.props.recipeList} deleteCard={this.props.deleteCard} likeRecipe={this.props.likeRecipe} editRecipe={this.props.editRecipe}/>)
     }
 
     return(
