@@ -24,6 +24,7 @@ const style = {
   backgroundColor: '#F44336',
   textAlign: 'center',
   display: 'inline-block',
+  verticalAlign: 'top'
 }
 
 const RecipeCard = props => {

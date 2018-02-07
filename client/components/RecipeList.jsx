@@ -40,7 +40,7 @@ class RecipeList extends Component {
 
     return(
       <MuiThemeProvider muiTheme={muiTheme}>
-        <div className="recipeList">
+        <div className="recipeList" style={{textAlign: "center"}}>
           {recipeCardArr}
         </div>
       </MuiThemeProvider>

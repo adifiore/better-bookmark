@@ -7,8 +7,8 @@ import {orange500, amber500, cyan500} from 'material-ui/styles/colors';
 
 // Right now, this component has props.recipeList and props.addCard
 const RecipeCreator = props => (
-  <Paper style={{backgroundColor: orange500, height:200}}>
-    <p id="creatorTitle"><strong>Add New Recipe</strong></p>
+  <Paper style={{backgroundColor: orange500, height:300, textAlign: 'center'}}>
+    <p id="creatorTitle" style={{fontSize:40, paddingTop:40}}>Add New Recipe</p>
 
     <TextField
       id="nameInput"
@@ -28,19 +28,13 @@ const RecipeCreator = props => (
 
     <RaisedButton 
       label="ADD TO MY COOKBOOK"
+      style={{display:'block', width:700, margin:'auto', marginTop:20}}
       onClick={() => props.addCard({
         name: document.getElementById('nameInput').value,
         category: document.getElementById('categoryInput').value,
         url: document.getElementById('URLInput').value,
         // notes: document.getElementById('notesInput').value,
       })}/>
-      
-    {/* <button onClick={() => props.addCard({
-      name: document.getElementById('nameInput').value,
-      category: document.getElementById('categoryInput').value,
-      url: document.getElementById('URLInput').value,
-      // notes: document.getElementById('notesInput').value,
-    })}>ADD YA RECIPE</button> */}
   </Paper>
 );
 
