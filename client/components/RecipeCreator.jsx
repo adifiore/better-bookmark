@@ -25,6 +25,11 @@ const RecipeCreator = props => (
       hintText="Paste URL"
       underlineStyle={{borderColor: cyan500}}
       underlineFocusStyle={{borderColor: amber500}} />
+    <TextField
+      id="notesInput"
+      hintText="Add some notes!"
+      underlineStyle={{borderColor: cyan500}}
+      underlineFocusStyle={{borderColor: amber500}} />
 
     <RaisedButton 
       label="ADD TO MY COOKBOOK"
@@ -33,7 +38,7 @@ const RecipeCreator = props => (
         name: document.getElementById('nameInput').value,
         category: document.getElementById('categoryInput').value,
         url: document.getElementById('URLInput').value,
-        // notes: document.getElementById('notesInput').value,
+        notes: document.getElementById('notesInput').value,
       })}/>
   </Paper>
 );

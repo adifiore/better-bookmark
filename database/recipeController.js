@@ -1,7 +1,7 @@
 const Recipe = require('./RecipeModel');
 
 const recipeController = {
-  //Post a recipe to root
+  //Post a recipe to /homepage
   createRecipe(req,res,next) {
     //check for valid input
     Recipe.create({
@@ -28,9 +28,28 @@ const recipeController = {
     })
   },
 
-  // getRecipe(req,res) {
-
-  // },
+  editRecipe(req,res,next) {
+    let name = req.body.name;
+    console.log(name);
+    Recipe.findOne({ name }, (err,recipe) => {
+      if (err || !recipe) {
+        return res.status(418).send(err);
+      } else {
+        if (req.body.category) {
+          recipe.category = req.body.category;
+        }
+        if (req.body.url) {
+          recipe.url = req.body.url;
+        }
+        if (req.body.notes) {
+          recipe.notes = req.body.notes;
+        }
+        recipe.save( (err) => {
+          next(); //because save is async. need to wait for the save.
+        });
+      }
+    });
+  },
 
   likeRecipe(req,res,next){
     let _id = req.params.id;
