@@ -7,27 +7,35 @@ import {orange500, amber500, cyan500} from 'material-ui/styles/colors';
 
 // Right now, this component has props.recipeList and props.addCard
 const RecipeCreator = props => (
-  <Paper style={{backgroundColor: orange500, height:300, textAlign: 'center'}}>
+  <Paper style={{backgroundColor: orange500, height:500, textAlign: 'center',  width:'50%', display:'inline-block'}}>
     <p id="creatorTitle" style={{fontSize:40, paddingTop:40}}>Add New Recipe</p>
 
     <TextField
       id="nameInput"
       hintText="Recipe Name"
+      style={{width:'80%'}}
       underlineStyle={{borderColor: cyan500}}
       underlineFocusStyle={{borderColor: amber500}} />
+    <br/>
     <TextField
       id="categoryInput"
       hintText="Category"
+      style={{width:'80%'}}
       underlineStyle={{borderColor: cyan500}}
       underlineFocusStyle={{borderColor: amber500}} />
+    <br/>
     <TextField
       id="URLInput"
       hintText="Paste URL"
+      style={{width:'80%'}}
       underlineStyle={{borderColor: cyan500}}
       underlineFocusStyle={{borderColor: amber500}} />
+    <br/>
     <TextField
       id="notesInput"
       hintText="Add some notes!"
+      style={{width:'80%'}}
+      multiLine={true}
       underlineStyle={{borderColor: cyan500}}
       underlineFocusStyle={{borderColor: amber500}} />
 

@@ -7,27 +7,35 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {orange500, amber500, cyan500, red500} from 'material-ui/styles/colors';
 
 const EditCard = props => (
-  <Paper style={{backgroundColor: red500, height:300, textAlign: 'center'}}>
+  <Paper style={{backgroundColor: amber500, height:500, textAlign: 'center', width:'50%', display:'inline-block'}}>
     <p id="creatorTitle" style={{fontSize:40, paddingTop:40}}>Edit A Recipe</p>
 
     <TextField
       id="nameInputEdit"
       hintText="Recipe Name"
+      style={{width:'80%'}}
       underlineStyle={{borderColor: cyan500}}
       underlineFocusStyle={{borderColor: amber500}} />
+    <br/>
     <TextField
       id="categoryInputEdit"
       hintText="New Category"
+      style={{width:'80%'}}
       underlineStyle={{borderColor: cyan500}}
       underlineFocusStyle={{borderColor: amber500}} />
+    <br/>
     <TextField
       id="URLInputEdit"
       hintText="New URL"
+      style={{width:'80%'}}
       underlineStyle={{borderColor: cyan500}}
       underlineFocusStyle={{borderColor: amber500}} />
+    <br/>
     <TextField
       id="notesInputEdit"
       hintText="New Notes"
+      style={{width:'80%'}}
+      multiLine={true}
       underlineStyle={{borderColor: cyan500}}
       underlineFocusStyle={{borderColor: amber500}} />
 
