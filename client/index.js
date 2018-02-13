@@ -1,10 +1,10 @@
 // Entrypoint for application
 import React from 'react';
 import { render } from 'react-dom';
-import ContentContainer from './containers/ContentContainer.jsx';
+import App from './App.jsx';
 
 render(
   // Hang the Main Container on the "contents" element in index.html
-  <ContentContainer />
+  <App />
   ,document.getElementById('contents')
 );
