@@ -34,3 +34,7 @@ img {
 #creatorTitle{
   text-align: center;
 }
+
+#loginContainer, #signupContainer{
+  text-align: center;
+}

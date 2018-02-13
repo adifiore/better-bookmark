@@ -44,7 +44,8 @@ app.post('/login',
 )
 
 // load main page
-app.get('/homepage', (req,res) => res.sendFile(__dirname + '/index.html'));
+// app.get('/', (req,res) => res.sendFile(__dirname + '/index.html'));
+app.use(express.static(__dirname + '/'));
 app.get('/styles.css', (req,res) => res.sendFile(__dirname + '/styles.css'));
 app.get('/main.js', (req,res) => res.sendFile(__dirname + '/main.js'));
 app.get('/dist/bundle.js', (req,res) => res.sendFile(__dirname + '/dist/bundle.js'));
@@ -53,7 +54,7 @@ app.get('/dist/bundle.js', (req,res) => res.sendFile(__dirname + '/dist/bundle.j
 app.get('/recipes', recipeController.getAllRecipes);
 
 // Create a recipe in the database
-app.post('/homepage',
+app.post('/',
   recipeController.createRecipe,
   recipeController.getAllRecipes);
 
