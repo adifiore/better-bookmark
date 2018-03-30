@@ -98,7 +98,6 @@ class ContentContainer extends Component {
     return(
       <MuiThemeProvider muiTheme={muiTheme}>
         <div id="mainWrapper">
-          {/* <EditCard/> */}
           <RaisedButton 
             label="Starred Only"
             style={{display:'block', width:180, margin:'auto', marginTop:20, backgroundColor:amber500}}

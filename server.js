@@ -6,7 +6,6 @@ const fs = require('fs');
 
 const recipeController = require('./database/recipeController');
 const Recipe = require('./database/RecipeModel');
-const userController = require('./authentication/userController.js');
 
 const PORT = 3000;
 
@@ -22,31 +21,9 @@ app.set('view engine', 'html');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Authentication (not currently working)
-app.get('/signup',
-  function(req, res, next) {
-    res.render('./signup')
-  }
-)
-
-app.post('/signup',
-  userController.addUser,
-  function(req, res, next) {
-    res.redirect('/homepage')
-  }
-)
-
-app.post('/login',
-  userController.verifyUser,
-  function(req, res, next) {
-    res.redirect('/homepage')
-  }
-)
-
 // load main page
-// app.get('/', (req,res) => res.sendFile(__dirname + '/index.html'));
-app.use(express.static(__dirname + '/'));
-app.get('/styles.css', (req,res) => res.sendFile(__dirname + '/styles.css'));
+app.get('/', (req,res) => res.sendFile(__dirname + '/views/index.html'));
+app.get('/styles.css', (req,res) => res.sendFile(__dirname + '/views/styles.css'));
 app.get('/main.js', (req,res) => res.sendFile(__dirname + '/main.js'));
 app.get('/dist/bundle.js', (req,res) => res.sendFile(__dirname + '/dist/bundle.js'));
 
