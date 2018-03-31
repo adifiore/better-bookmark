@@ -17,19 +17,19 @@ const style = {
   verticalAlign: 'top'
 }
 
-const RecipeCard = props => {
+const CardCard = props => {
   let image;
   if (props.liked === true){
-    image = <img id="filledStar" onClick={() => {props.likeRecipe(props.id)}} src="http://simpleicon.com/wp-content/uploads/star.png" width="60"/>
+    image = <img id="filledStar" onClick={() => {props.likeCard(props.id)}} src="http://simpleicon.com/wp-content/uploads/star.png" width="60"/>
   } else {
-    image = <img id="star" onClick={() => {props.likeRecipe(props.id)}} src="https://png.icons8.com/metro/1600/star.png" width="60"/>
+    image = <img id="star" onClick={() => {props.likeCard(props.id)}} src="https://png.icons8.com/metro/1600/star.png" width="60"/>
   }
 
   return (
     <Card style={style} zDepth={3}>
-      <p id="recipeTitle">{props.recipeList[props.index].name}</p>
-      <p><label>Category: </label>{props.recipeList[props.index].category}</p>
-      <p><a href={props.recipeList[props.index].url}>Click to View Recipe</a></p>
+      <p id="CardTitle">{props.CardList[props.index].name}</p>
+      <p><label>Category: </label>{props.CardList[props.index].category}</p>
+      <p><a href={props.CardList[props.index].url}>Click to View Card</a></p>
 
       {image}
     
@@ -43,7 +43,7 @@ const RecipeCard = props => {
         onClick={() => props.editCard(props.id)}/> */}
 
       <CardHeader
-        title="Recipe Notes"
+        title="Card Notes"
         actAsExpander={true}
         // showExpandableButton={true}
         style={{display:'block', margin:'auto', width:80, textAlign:'center'}}
@@ -58,4 +58,4 @@ const RecipeCard = props => {
     )
 } 
 
-export default RecipeCard;
+export default CardCard;

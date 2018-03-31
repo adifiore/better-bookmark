@@ -1,10 +1,10 @@
 {
-  "name": "cookbook",
+  "name": "better-bookmark",
   "version": "1.0.0",
-  "description": "recipe aggregator",
+  "description": "Bookmarking Tool",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon ./server/server.js",
+    "start": "nodemon ./server.js",
     "webpack": "./node_modules/.bin/webpack -w"
   },
   "dependencies": {

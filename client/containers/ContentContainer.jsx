@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import child components...
-import RecipeCreator from '../components/RecipeCreator.jsx'
-import RecipeList from '../components/RecipeList.jsx'
+import CardCreator from '../components/CardCreator.jsx'
+import CardList from '../components/CardList.jsx'
 import EditCard from '../components/EditCard.jsx'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
@@ -20,41 +20,41 @@ class ContentContainer extends Component {
     super();
 
     this.state={
-      recipeList: [],
+      CardList: [],
     };
 
     this.dbList; // So that when I click 'starred only', I can go back.
     this.starOn = false; // Initially, the list is not filtered by stars.
 
-    this.populateRecipes = this.populateRecipes.bind(this);
+    this.populateCards = this.populateCards.bind(this);
     this.deleteCard = this.deleteCard.bind(this);
     this.addCard = this.addCard.bind(this);
     this.editCard = this.editCard.bind(this);
-    this.likeRecipe = this.likeRecipe.bind(this);
+    this.likeCard = this.likeCard.bind(this);
     this.viewStarred = this.viewStarred.bind(this);
   }
 
-  populateRecipes(data){
+  populateCards(data){
     const stateCopy = {};
-    stateCopy.recipeList = data;
+    stateCopy.CardList = data;
     this.dbList = data; // So that 'starred only' can be undone.
-    this.setState({ recipeList: stateCopy.recipeList });
+    this.setState({ CardList: stateCopy.CardList });
   }
 
   deleteCard(id){
     $.ajax({
       type: 'DELETE',
       url: 'http://localhost:3000/' + id,
-      success: this.populateRecipes //reset state
+      success: this.populateCards //reset state
     })
   }
 
   addCard(data){
     $.ajax({
       type: 'POST',
-      url: 'http://localhost:3000/homepage',
+      url: 'http://localhost:3000/',
       data: data,
-      success: this.populateRecipes
+      success: this.populateCards
     })
   }
 
@@ -63,17 +63,17 @@ class ContentContainer extends Component {
       type: 'PATCH',
       url: 'http://localhost:3000/',
       data: data,
-      success: this.populateRecipes
+      success: this.populateCards
     })
 
   }
 
-  likeRecipe(id){
+  likeCard(id){
     // Send a put request to update the "liked" property
     $.ajax({
       type: 'PUT',
       url: 'http://localhost:3000/' + id,
-      success: this.populateRecipes
+      success: this.populateCards
     })
     // On success, come back here and change the display
   }
@@ -81,14 +81,14 @@ class ContentContainer extends Component {
   viewStarred(){
     if (this.starOn === false) {
       this.starOn = true;
-      let recipesArr = this.state.recipeList.slice();
-      recipesArr = recipesArr.filter((recipe) => {
-        return recipe.liked;
+      let CardsArr = this.state.CardList.slice();
+      CardsArr = CardsArr.filter((Card) => {
+        return Card.liked;
       })
-      this.setState({ recipeList: recipesArr});
+      this.setState({ CardList: CardsArr});
     } else {
       this.starOn = false;
-      this.setState({recipeList: this.dbList});
+      this.setState({CardList: this.dbList});
     }
   }
 
@@ -102,19 +102,19 @@ class ContentContainer extends Component {
             label="Starred Only"
             style={{display:'block', width:180, margin:'auto', marginTop:20, backgroundColor:amber500}}
             onClick={() => this.viewStarred()}/>
-          <RecipeList
-            recipeList={this.state.recipeList}
-            populateRecipes={this.populateRecipes}
+          <CardList
+            CardList={this.state.CardList}
+            populateCards={this.populateCards}
             deleteCard={this.deleteCard}
-            likeRecipe={this.likeRecipe}/>
-          <RecipeCreator
+            likeCard={this.likeCard}/>
+          <CardCreator
             addCard={this.addCard}
             onChange={this.handleChange}
-            recipeList={this.state.recipeList}/>
+            CardList={this.state.CardList}/>
           <EditCard
             addCard={this.addCard}
             onChange={this.handleChange}
-            recipeList={this.state.recipeList}
+            CardList={this.state.CardList}
             editCard={this.editCard}/>            
         </div>
       </MuiThemeProvider>

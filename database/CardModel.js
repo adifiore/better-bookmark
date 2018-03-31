@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
-const recipeSchema = new Schema({
+const CardSchema = new Schema({
   name: {type: String, required: true, unique: true},
   category: {type: String, required: true},
   url: {type: String, required: true},
@@ -9,4 +9,4 @@ const recipeSchema = new Schema({
   notes: String
 });
 
-module.exports = mongoose.model('Recipe', recipeSchema);
+module.exports = mongoose.model('Card', CardSchema);

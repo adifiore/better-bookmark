@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RecipeCard from './RecipeCard.jsx'
+import CardCard from './CardCard.jsx'
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -8,11 +8,11 @@ import {orange500, amber500, cyan500, red500} from 'material-ui/styles/colors';
 
 const EditCard = props => (
   <Paper style={{backgroundColor: amber500, height:500, textAlign: 'center', width:'50%', display:'inline-block'}}>
-    <p id="creatorTitle" style={{fontSize:40, paddingTop:40}}>Edit A Recipe</p>
+    <p id="creatorTitle" style={{fontSize:40, paddingTop:40}}>Edit A Card</p>
 
     <TextField
       id="nameInputEdit"
-      hintText="Recipe Name"
+      hintText="Card Name"
       style={{width:'80%'}}
       underlineStyle={{borderColor: cyan500}}
       underlineFocusStyle={{borderColor: amber500}} />

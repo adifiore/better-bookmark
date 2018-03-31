@@ -4,8 +4,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const fs = require('fs');
 
-const recipeController = require('./database/recipeController');
-const Recipe = require('./database/RecipeModel');
+const CardController = require('./database/CardController');
+const Card = require('./database/CardModel');
 
 const PORT = 3000;
 
@@ -27,29 +27,28 @@ app.get('/styles.css', (req,res) => res.sendFile(__dirname + '/views/styles.css'
 app.get('/main.js', (req,res) => res.sendFile(__dirname + '/main.js'));
 app.get('/dist/bundle.js', (req,res) => res.sendFile(__dirname + '/dist/bundle.js'));
 
-// Get all recipes (to load them or check them)
-app.get('/recipes', recipeController.getAllRecipes);
+// Get all Cards (to load them or check them)
+app.get('/Cards', CardController.getAllCards);
 
-// Create a recipe in the database
+// Create a Card in the database
 app.post('/',
-  recipeController.createRecipe,
-  recipeController.getAllRecipes);
+  CardController.createCard,
+  CardController.getAllCards);
 
-// 'Like' a recipe in the database
+// 'Like' a Card in the database
 app.put('/:id',
-  recipeController.likeRecipe,
-  recipeController.getAllRecipes);
+  CardController.likeCard,
+  CardController.getAllCards);
 
-// Update a recipe in the database
+// Update a Card in the database
 
 app.patch('/',
-  recipeController.editRecipe,
-  recipeController.getAllRecipes);
+  CardController.editCard,
+  CardController.getAllCards);
 
-// Delete a recipe from the database
+// Delete a Card from the database
 app.delete('/:id',
-  recipeController.deleteRecipe,
-  recipeController.getAllRecipes);
-
+  CardController.deleteCard,
+  CardController.getAllCards);
 
 app.listen(PORT, () => console.log(`Listening on PORT: ${PORT}`));
